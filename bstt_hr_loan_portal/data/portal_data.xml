@@ -2,7 +2,7 @@
 <odoo noupdate="0">
 
     <record id="hr_loan_portal" model="portal.portal">
-        <field name="name">Loan Request</field>
+        <field name="name">Loans</field>
         <field name="model_id" ref="hr_loan.model_hr_loan"/>
         <field name="domain">[('employee_id.user_id.id','=',uid)]</field>
     </record>

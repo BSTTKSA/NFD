@@ -257,7 +257,7 @@
                                                         </thead>
                                                         <tbody>
                                                             <t t-foreach="record[field.field_id.name] if record else []"
-                                                               t-as="record">
+                                                               t-as="line">
                                                                 <tr>
                                                                     <t t-foreach="field.table_lines" t-as="col">
                                                                         <td class="">
@@ -265,14 +265,14 @@
                                                                                     t-if="col.field_id.ttype not in ('selection','many2one','many2many')"
                                                                                     t-att-type="input_type[field.field_id.name][col.field_id.name]"
                                                                                     t-att-readonly="disable_edit or col.readonly"
-                                                                                    t-attf-name="#{field.field_id.name}.#{col.field_id.name}.#{record['id']}"
-                                                                                    t-att-value="record[col.field_id.name] if record else ''"
+                                                                                    t-attf-name="#{field.field_id.name}.#{col.field_id.name}.#{line['id']}"
+                                                                                    t-att-value="line[col.field_id.name] if line else ''"
                                                                                     t-att-required="col.required"
                                                                                     class="form-control"/>
 
                                                                             <select t-if="col.field_id.ttype in ('many2one','selection')"
-                                                                                    t-attf-name="#{field.field_id.name}.#{col.field_id.name}.#{record['id']}"
-                                                                                    t-attf-id="#{field.field_id.name}.#{col.field_id.name}.#{record['id']}"
+                                                                                    t-attf-name="#{field.field_id.name}.#{col.field_id.name}.#{line['id']}"
+                                                                                    t-attf-id="#{field.field_id.name}.#{col.field_id.name}.#{line['id']}"
                                                                                     t-att-disabled="disable_edit or col.readonly"
                                                                                     t-att-required="col.required"
                                                                                     t-attf-class="form-control">
@@ -281,7 +281,7 @@
                                                                                    t-foreach="selection[field.field_id.name][col.field_id.name] or []"
                                                                                    t-as="item">
                                                                                     <option t-att-value="item.get('key')"
-                                                                                            t-att-selected="item.get('key') == record[col.field_id.name][0]">
+                                                                                            t-att-selected="item.get('key') == line[col.field_id.name][0]">
                                                                                         <t t-esc="item.get('val')"/>
                                                                                     </option>
                                                                                 </t>
@@ -289,7 +289,7 @@
                                                                                    t-foreach="selection[field.field_id.name][col.field_id.name] or []"
                                                                                    t-as="item">
                                                                                     <option t-att-value="item.get('key')"
-                                                                                            t-att-selected="item.get('key') == record[col.field_id.name]">
+                                                                                            t-att-selected="item.get('key') == line[col.field_id.name]">
                                                                                         <t t-esc="item.get('val')"/>
                                                                                     </option>
                                                                                 </t>
