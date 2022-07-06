@@ -183,7 +183,7 @@
 
                                                             t-if="field.ttype == 'binary' and not disable_edit"
                                                             t-att-type="input_type[field.field_id.name]"
-                                                            t-att-readonly="disable_edit or field.readonly or attrs_readonly[field.field_id.name]"
+                                                            t-att-disabled="disable_edit or field.readonly or attrs_readonly[field.field_id.name]"
                                                             t-att-name="field.field_id.name"
                                                             t-att-id="field.field_id.name"
                                                             t-att-value="record[field.field_id.name] if record else default_values[field.field_name]"
@@ -215,7 +215,7 @@
                                                     <input
                                                             t-if="field.ttype not in ('many2one','many2many','one2many','selection','binary')"
                                                             t-att-type="input_type[field.field_id.name]"
-                                                            t-att-readonly="disable_edit or field.readonly or attrs_readonly[field.field_id.name]"
+                                                            t-att-disabled="disable_edit or field.readonly or attrs_readonly[field.field_id.name]"
                                                             t-att-name="field.field_id.name"
                                                             t-att-id="field.field_id.name"
                                                             t-att-value="record[field.field_id.name] if record else default_values[field.field_name]"
@@ -264,7 +264,7 @@
                                                                             <input
                                                                                     t-if="col.field_id.ttype not in ('selection','many2one','many2many')"
                                                                                     t-att-type="input_type[field.field_id.name][col.field_id.name]"
-                                                                                    t-att-readonly="disable_edit or col.readonly"
+                                                                                    t-att-disabled="disable_edit or col.readonly"
                                                                                     t-attf-name="#{field.field_id.name}.#{col.field_id.name}.#{line['id']}"
                                                                                     t-att-value="line[col.field_id.name] if line else ''"
                                                                                     t-att-required="col.required"
